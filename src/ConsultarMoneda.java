@@ -7,7 +7,8 @@ import java.net.http.HttpResponse;
 public class ConsultarMoneda {
 
     public Moneda buscarTasas(String monedaBase) {
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/a55e011cf0faab861cac82ce/latest/" + monedaBase);
+        String apiKey = System.getenv("API_KEY"); // Busca la variable en el sistema
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + monedaBase);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
